@@ -1,1 +1,163 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Kate Nuzum · Merchandise</title></head><body><p>Placeholder — full desk being published.</p></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Kate Nuzum · Merchandise</title>
+<style>
+:root{--ink:#1a221c;--cream:#f3eee3;--paper:#fffcf6;--line:#d2c8b4;--forest:#0f3d24;--moss:#1b5c34;--mute:#4a534b;--slate:#172433;--sand:#f4ead6;--gold:#e8c36a}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;background:#0c2418;color:var(--ink);font:16px/1.55 Segoe UI,system-ui,sans-serif}
+h1,h2,h3{font-family:Georgia,serif}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+#home{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:var(--cream);text-align:center;padding:24px}
+.icon{width:112px;height:112px;border:0;border-radius:28px;cursor:pointer;background:linear-gradient(180deg,#fffef8,#efe6d2);color:var(--forest);box-shadow:0 18px 40px rgba(0,0,0,.35);font:800 1.35rem Georgia,serif}
+.icon small{display:block;font:600 .62rem/1 Segoe UI,sans-serif;letter-spacing:.18em;text-transform:uppercase;margin-top:6px;color:var(--moss)}
+#desk{display:none;min-height:100vh;background:var(--cream)}
+.bar{background:var(--forest);color:#f7f3ea;padding:18px 22px 16px;display:flex;justify-content:space-between;gap:16px;align-items:flex-end;flex-wrap:wrap;border-bottom:3px solid var(--gold)}
+.bar .who{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:#d9c89a}
+.bar h1{font-size:1.55rem;font-weight:600;margin-top:4px}
+.bar .role{font-size:.95rem;color:#dce8df;font-family:Segoe UI,sans-serif}
+.bar .back{background:transparent;color:#f7f3ea;border:1px solid #cfc6ad;border-radius:8px;padding:8px 14px;cursor:pointer;font:inherit}
+nav{background:#e8efe4;border-bottom:1px solid var(--line);padding:10px 16px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+nav button{border:1px solid transparent;background:transparent;color:var(--ink);border-radius:999px;padding:8px 14px;cursor:pointer;font:inherit}
+nav button[aria-current="page"]{background:var(--forest);color:#fff}
+.search{margin-left:auto;min-width:140px;flex:1;max-width:220px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;font:inherit}
+.wrap{max-width:920px;margin:0 auto;padding:22px 18px 48px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;margin:0 0 14px}
+.kicker{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:6px}
+h2{font-size:1.25rem;font-weight:600;color:var(--forest);margin-bottom:8px}
+.lede{color:var(--mute);margin-bottom:12px}
+.item{display:flex;gap:10px;align-items:flex-start;padding:11px 0;border-bottom:1px solid #eee}
+.item:last-child{border-bottom:0}
+.item input{width:18px;height:18px;margin-top:4px;accent-color:var(--forest)}
+.rooms{display:grid;gap:10px}
+@media(min-width:640px){.rooms{grid-template-columns:1fr 1fr}}
+.clickrow{text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;font:inherit;width:100%}
+.clickrow b{display:block;font-family:Georgia,serif;font-size:1.05rem;color:var(--forest)}
+.clickrow span{color:var(--mute);font-size:.92rem}
+.pane{display:none}.pane.on{display:block}
+.crumb{margin-bottom:12px;color:var(--mute)}
+.crumb button{background:none;border:0;color:var(--moss);cursor:pointer;font:inherit;text-decoration:underline}
+.sol{background:var(--slate);color:var(--sand);border-left:5px solid var(--gold);border-radius:12px;padding:16px 18px;margin-top:14px}
+.sol h3{font-family:Georgia,serif;color:var(--gold);font-size:1rem;margin-bottom:6px}
+.note{width:100%;min-height:88px;margin-top:8px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font:inherit}
+</style>
+</head>
+<body>
+<div id="home">
+<button class="icon" id="open" type="button">KN<small>Desk</small></button>
+<p>Kate Nuzum<br>Merchandise · Cedar Park</p>
+</div>
+<div id="desk">
+<header class="bar">
+<div><div class="who">Nebraska Furniture Mart · Cedar Park</div>
+<h1 tabindex="-1">Kate Nuzum</h1>
+<p class="role">Senior Merchandise Manager · Opening Spring 2027</p></div>
+<button class="back" id="close" type="button">Close desk</button>
+</header>
+<nav aria-label="Sections">
+<button type="button" data-go="today" aria-current="page">Today</button>
+<button type="button" data-go="rooms">Rooms</button>
+<button type="button" data-go="waiting">Awaiting others</button>
+<button type="button" data-go="notes">Notes</button>
+<input class="search" id="q" type="search" placeholder="Search" aria-label="Search"/>
+</nav>
+<main class="wrap">
+<section class="pane on" id="today">
+<article class="card">
+<div class="kicker">Sister floors</div>
+<h2>Already established</h2>
+<p class="lede">Numbers below are from The Colony and other campuses. They are a picture, not stock in this building.</p>
+<div class="item"><input type="checkbox" data-k="fam-four"><label>Four businesses: furniture, flooring, appliances, electronics.</label></div>
+<div class="item"><input type="checkbox" data-k="fam-rooms"><label>The Colony set furniture as rooms — 125 accent chairs, 165 recliners, 110 bedroom sets.</label></div>
+<div class="item"><input type="checkbox" data-k="fam-kit"><label>Colony kitchen wall: 206 refrigerators, 220 cooktops, 109 dishwashers, 76 laundry pairs.</label></div>
+</article>
+<article class="card">
+<div class="kicker">This store</div>
+<h2>Still to complete</h2>
+<div class="item"><input type="checkbox" data-k="yet-rooms"><label>Set living, outdoor, kitchen, and bedroom.</label></div>
+<div class="item"><input type="checkbox" data-k="yet-cut"><label>Austin mix: more hard surface and outdoor than Omaha’s carpet wall.</label></div>
+</article>
+<div class="rooms">
+<button class="clickrow" data-go="room-living"><b>Living</b><span>Sofa toward a television wall</span></button>
+<button class="clickrow" data-go="room-kitchen"><b>Kitchen</b><span>A set a guest can walk into</span></button>
+<button class="clickrow" data-go="room-bedroom"><b>Bedroom</b><span>Bed and base together</span></button>
+<button class="clickrow" data-go="room-outdoor"><b>Outdoor</b><span>Daylight, year-round</span></button>
+</div>
+</section>
+<section class="pane" id="rooms">
+<div class="kicker">Floor</div><h2>Rooms</h2>
+<div class="rooms">
+<button class="clickrow" data-go="room-living"><b>Living</b><span>Still to complete</span></button>
+<button class="clickrow" data-go="room-kitchen"><b>Kitchen</b><span>Still to complete</span></button>
+<button class="clickrow" data-go="room-bedroom"><b>Bedroom</b><span>Still to complete</span></button>
+<button class="clickrow" data-go="room-outdoor"><b>Outdoor</b><span>Still to complete</span></button>
+</div>
+</section>
+<section class="pane" id="room-living">
+<p class="crumb"><button type="button" data-go="rooms">Rooms</button> · Living</p>
+<article class="card"><div class="kicker">This building</div><h2>Living</h2>
+<p class="lede">Still to complete. Colony living: 125 accent chairs and 165 recliners in rooms, not a sofa row.</p>
+<div class="item"><input type="checkbox" data-k="liv-dress"><label>First arrangement of this room is complete</label></div>
+</article>
+<aside class="sol"><h3>Suggested approach</h3><p>Face the sofa at a television wall. Keep it a display until this building has a match.</p></aside>
+</section>
+<section class="pane" id="room-kitchen">
+<p class="crumb"><button type="button" data-go="rooms">Rooms</button> · Kitchen</p>
+<article class="card"><div class="kicker">This building</div><h2>Kitchen</h2>
+<p class="lede">Still to complete. Colony opened with 206 refrigerators, 220 cooktops, 109 dishwashers, 76 laundry pairs.</p>
+<div class="item"><input type="checkbox" data-k="kit-dress"><label>First arrangement of this room is complete</label></div>
+</article>
+<aside class="sol"><h3>Suggested approach</h3><p>A kitchen a guest can walk into. Nearby furniture stores do not have this wall.</p></aside>
+</section>
+<section class="pane" id="room-bedroom">
+<p class="crumb"><button type="button" data-go="rooms">Rooms</button> · Bedroom</p>
+<article class="card"><div class="kicker">This building</div><h2>Bedroom</h2>
+<p class="lede">Still to complete. Colony opened with 110 bedroom sets.</p>
+<div class="item"><input type="checkbox" data-k="bed-dress"><label>First arrangement of this room is complete</label></div>
+</article>
+<aside class="sol"><h3>Suggested approach</h3><p>Show a bed that can leave with its foundation. Day one does not need 110 sets.</p></aside>
+</section>
+<section class="pane" id="room-outdoor">
+<p class="crumb"><button type="button" data-go="rooms">Rooms</button> · Outdoor</p>
+<article class="card"><div class="kicker">This building</div><h2>Outdoor</h2>
+<p class="lede">Still to complete. Texas outdoor year-round. Sister floors: 8×10 leaves most often.</p>
+<div class="item"><input type="checkbox" data-k="out-dress"><label>First arrangement of this room is complete</label></div>
+</article>
+<aside class="sol"><h3>Suggested approach</h3><p>Daylight, next to flooring, so patio and plank support one ticket.</p></aside>
+</section>
+<section class="pane" id="waiting">
+<article class="card"><div class="kicker">Other teams</div><h2>Awaiting others</h2>
+<div class="item"><input type="checkbox" data-k="w-recv"><label>Receiving — a count in this building</label></div>
+<div class="item"><input type="checkbox" data-k="w-twin"><label>A matching piece behind each display</label></div>
+<div class="item"><input type="checkbox" data-k="w-po"><label>First orders written to Cedar Park</label></div>
+</article>
+<aside class="sol"><h3>Suggested approach while waiting</h3><p>Rooms may stay displays. Sister-store counts stay theirs.</p></aside>
+</section>
+<section class="pane" id="notes">
+<article class="card"><div class="kicker">Personal</div><h2>Notes</h2>
+<p class="lede">Stays on this phone or computer. Does not change a tag.</p>
+<textarea class="note" id="journal" placeholder="Working notes…"></textarea>
+</article>
+</section>
+</main></div>
+<script>
+const $= (s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEY="kate-desk-v2";
+let store={}; try{store=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){store={}}
+const save=()=>localStorage.setItem(KEY,JSON.stringify(store));
+function go(id){
+ $$(".pane").forEach(p=>p.classList.toggle("on",p.id===id));
+ const top=id.startsWith("room-")?"rooms":id;
+ $$("nav button").forEach(b=>b.setAttribute("aria-current",b.dataset.go===top?"page":"false"));
+}
+$$("[data-go]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.go)));
+$$("input[data-k]").forEach(box=>{box.checked=!!store[box.dataset.k]; box.addEventListener("change",()=>{store[box.dataset.k]=box.checked;save();});});
+const journal=$("#journal"); journal.value=store.journal||""; journal.addEventListener("input",()=>{store.journal=journal.value;save();});
+$("#open").addEventListener("click",()=>{$("#home").style.display="none";$("#desk").style.display="block";});
+$("#close").addEventListener("click",()=>{$("#desk").style.display="none";$("#home").style.display="flex";});
+$("#q").addEventListener("input",()=>{const q=$("#q").value.trim().toLowerCase(); if(!q){go("today");return;} const hit=$$(".pane").find(p=>p.id!=="today"&&p.textContent.toLowerCase().includes(q)); go(hit?hit.id:"today");});
+</script>
+</body></html>
